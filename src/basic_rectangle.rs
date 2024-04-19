@@ -2,7 +2,7 @@ use crate::Rectangle;
 
 /// A basic rectangle implementation.
 /// Edges are inclusive.
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub struct BasicRectangle {
     x: i32,
     y: i32,
