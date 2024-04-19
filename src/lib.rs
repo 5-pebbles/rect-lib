@@ -1,14 +1,10 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+mod basic_rectangle;
+pub use basic_rectangle::BasicRectangle;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+pub trait Rectangle<T> {
+    fn left(&self) -> T;
+    fn right(&self) -> T;
+    fn top(&self) -> T;
+    fn bottom(&self) -> T;
+    fn from_sides(left: T, right: T, top: T, bottom: T) -> Self;
 }
