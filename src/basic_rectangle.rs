@@ -1,6 +1,8 @@
 use crate::Rectangle;
 
-#[derive(Clone, Copy)]
+/// A basic rectangle implementation.
+/// Edges are inclusive.
+#[derive(Clone, Copy, Debug)]
 pub struct BasicRectangle {
     x: i32,
     y: i32,
@@ -31,8 +33,8 @@ impl Rectangle for BasicRectangle {
         BasicRectangle {
             x: left,
             y: top,
-            width: right - left,
-            height: top - bottom,
+            width: right - left + 1,
+            height: top - bottom + 1,
         }
     }
 }
