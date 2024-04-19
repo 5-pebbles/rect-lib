@@ -174,18 +174,19 @@ where
                 if last_rectange_bottom > obstruction.top() {
                     gaps.push(Gap {
                         top: last_rectange_bottom,
-                        bottom: obstruction.top() + Self::Unit::one(),
+                        bottom: obstruction.top() + Self::Unit::one(), // the top is inclusive so +1
                     });
                 }
 
-                // if the current shingle starts a the same place but is shorter
-                // then we could have a fake gap
+                // if a later shingle starts in the same place we could get a fake gap
+                // so we avoid that by getting the lowest point
                 last_rectange_bottom =
                     last_rectange_bottom.min(obstruction.bottom() - Self::Unit::one());
             }
 
             // check if there is a gap between the bottom of the last shingle and the end of the roof
-            if last_rectange_bottom > self.bottom() {
+            // the bottom is inclusive so >=
+            if last_rectange_bottom >= self.bottom() {
                 gaps.push(Gap {
                     top: last_rectange_bottom,
                     bottom: self.bottom(),
