@@ -1,9 +1,14 @@
 use core::cmp::Reverse;
 use num::{Num, One};
 
+// re-export the num crate
+pub use num;
+
+// basic rectangle
 mod basic_rectangle;
 pub use basic_rectangle::BasicRectangle;
 
+// & here's our trait
 pub trait Rectangle
 where
     Self: Sized + Copy,
