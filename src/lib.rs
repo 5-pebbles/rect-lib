@@ -38,7 +38,6 @@ where
         bottom: Self::Unit,
     ) -> Self;
 
-
     // - Default implementations.
 
     /// The width of the rectangle.
@@ -63,10 +62,7 @@ where
     }
 
     /// Checks if one rectangle contains another.
-    fn contains_rectangle<T>(&self, other: &T) -> bool
-    where
-        T: Rectangle<Unit = Self::Unit>,
-    {
+    fn contains_rectangle(&self, other: &impl Rectangle<Unit = Self::Unit>) -> bool {
         self.left() <= other.left()
             && self.right() >= other.right()
             && self.top() >= other.top()
@@ -74,10 +70,7 @@ where
     }
 
     /// Checks if one rectangle overlaps with another.
-    fn overlaps<T>(&self, other: &T) -> bool
-    where
-        T: Rectangle<Unit = Self::Unit>,
-    {
+    fn overlaps(&self, other: &impl Rectangle<Unit = Self::Unit>) -> bool {
         self.left() < other.right()
             && self.right() > other.left()
             && self.top() > other.bottom()
@@ -85,10 +78,7 @@ where
     }
 
     /// Returns the intersection of two rectangles.
-    fn intersection<T>(&self, other: &T) -> Option<Self>
-    where
-        T: Rectangle<Unit = Self::Unit>,
-    {
+    fn intersection(&self, other: &impl Rectangle<Unit = Self::Unit>) -> Option<Self> {
         let left = self.left().max(other.left());
         let right = self.right().min(other.right());
         let top = self.top().min(other.top());
@@ -102,10 +92,10 @@ where
     }
 
     /// This algorithm identifies all unique unobstructed sub-rectangles within a given rectangle by comparing it against a list of obstructions.
-    fn unobstructed_subrectangles<T, U>(&self, obstructions: &[&T]) -> Vec<Self>
-    where
-        T: Rectangle<Unit = Self::Unit>,
-    {
+    fn unobstructed_subrectangles(
+        &self,
+        obstructions: &[&impl Rectangle<Unit = Self::Unit>],
+    ) -> Vec<Self> {
         /// A rectangle that has not been obstructed yet
         #[derive(Clone)]
         struct UnfinishedRect<T: Rectangle> {
