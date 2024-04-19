@@ -1,5 +1,6 @@
 use crate::Rectangle;
 
+#[derive(Clone, Copy)]
 pub struct BasicRectangle {
     x: i32,
     y: i32,
@@ -7,7 +8,9 @@ pub struct BasicRectangle {
     height: i32,
 }
 
-impl Rectangle<i32> for BasicRectangle {
+impl Rectangle for BasicRectangle {
+    type Unit = i32;
+
     fn left(&self) -> i32 {
         self.x
     }
@@ -24,7 +27,7 @@ impl Rectangle<i32> for BasicRectangle {
         self.y - self.height + 1
     }
 
-    fn from_sides(left: i32, right: i32, top: i32, bottom: i32) -> Self {
+    fn new_from_sides(left: i32, right: i32, top: i32, bottom: i32) -> Self {
         BasicRectangle {
             x: left,
             y: top,
@@ -33,4 +36,3 @@ impl Rectangle<i32> for BasicRectangle {
         }
     }
 }
-
