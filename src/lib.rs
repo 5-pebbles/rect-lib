@@ -89,7 +89,7 @@ where
         let top = self.top().min(other.top());
         let bottom = self.bottom().max(other.bottom());
 
-        if left < right && bottom < top {
+        if left <= right && bottom <= top {
             Some(Self::new_from_sides(left, right, top, bottom))
         } else {
             None
