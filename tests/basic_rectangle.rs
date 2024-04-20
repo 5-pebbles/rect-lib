@@ -81,3 +81,11 @@ fn test_intersection_overlap() {
     assert_eq!(intersection.top(), 1);
     assert_eq!(intersection.bottom(), 1);
 }
+
+#[test]
+fn test_contains_rectangle() {
+    let rect1 = BasicRectangle::new_from_sides(0, 2, 2, 0);
+    let rect2 = BasicRectangle::new_from_sides(1, 2, 2, 1);
+    assert!(rect1.contains_rectangle(&rect2));
+    assert!(!rect2.contains_rectangle(&rect1));
+}
