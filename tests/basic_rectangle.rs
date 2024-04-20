@@ -43,6 +43,16 @@ fn test_area_rectangle() {
 }
 
 #[test]
+fn test_translate() {
+    let rect = BasicRectangle::new_from_sides(0, 1, 1, 0);
+    let translated = rect.translate(1, 1);
+    assert_eq!(translated.left(), 1);
+    assert_eq!(translated.right(), 2);
+    assert_eq!(translated.top(), 2);
+    assert_eq!(translated.bottom(), 1);
+}
+
+#[test]
 fn test_overlaps() {
     let rect1 = BasicRectangle::new_from_sides(0, 1, 1, 0);
     let rect2 = BasicRectangle::new_from_sides(2, 3, 3, 2);

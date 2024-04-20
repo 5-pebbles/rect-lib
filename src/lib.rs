@@ -50,6 +50,16 @@ where
         self.top() - self.bottom()
     }
 
+    /// Translates the rectangle by the given amount.
+    fn translate(&self, x: Self::Unit, y: Self::Unit) -> Self {
+        Self::new_from_sides(
+            self.left() + x,
+            self.right() + x,
+            self.top() + y,
+            self.bottom() + y,
+        )
+    }
+
     /// The perimeter of the rectangle.
     fn perimeter(&self) -> Self::Unit {
         (self.width() + self.height()) * (Self::Unit::one() + Self::Unit::one())
