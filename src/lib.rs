@@ -50,6 +50,11 @@ where
         self.top() - self.bottom()
     }
 
+    /// The perimeter of the rectangle.
+    fn perimeter(&self) -> Self::Unit {
+        (self.width() + self.height()) * (Self::Unit::one() + Self::Unit::one())
+    }
+
     /// The area of the rectangle.
     fn area(&self) -> Self::Unit {
         // This function is so cute for some reason

@@ -8,3 +8,9 @@ fn test_basic_rectangle() {
     assert_eq!(rect.top(), 2);
     assert_eq!(rect.bottom(), 3);
 }
+
+#[test]
+fn test_perimeter_rectangle() {
+    let rect = BasicRectangle::new_from_sides(0, 1, 1, 0);
+    assert_eq!(rect.perimeter(), 4);
+}
