@@ -10,6 +10,24 @@ fn test_basic_rectangle() {
 }
 
 #[test]
+fn test_width() {
+    let rect = BasicRectangle::new_from_sides(0, 1, 1, 0);
+    assert_eq!(rect.width(), 1);
+
+    let rect = BasicRectangle::new_from_sides(0, 4, 3, 0);
+    assert_eq!(rect.width(), 4);
+}
+
+#[test]
+fn test_height() {
+    let rect = BasicRectangle::new_from_sides(0, 1, 1, 0);
+    assert_eq!(rect.height(), 1);
+
+    let rect = BasicRectangle::new_from_sides(0, 3, 4, 0);
+    assert_eq!(rect.height(), 4);
+}
+
+#[test]
 fn test_perimeter_rectangle() {
     let rect = BasicRectangle::new_from_sides(0, 1, 1, 0);
     assert_eq!(rect.perimeter(), 4);
