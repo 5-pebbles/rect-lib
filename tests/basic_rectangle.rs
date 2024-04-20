@@ -25,6 +25,17 @@ fn test_area_rectangle() {
 }
 
 #[test]
+fn test_overlaps() {
+    let rect1 = BasicRectangle::new_from_sides(0, 1, 1, 0);
+    let rect2 = BasicRectangle::new_from_sides(2, 3, 3, 2);
+    assert!(!rect1.overlaps(&rect2));
+
+    let rect1 = BasicRectangle::new_from_sides(0, 1, 1, 0);
+    let rect2 = BasicRectangle::new_from_sides(1, 2, 2, 1);
+    assert!(rect1.overlaps(&rect2));
+}
+
+#[test]
 fn test_contains_point() {
     let rect = BasicRectangle::new_from_sides(0, 2, 2, 0);
     assert!(rect.contains_point(1, 1));

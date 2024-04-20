@@ -76,10 +76,10 @@ where
 
     /// Checks if one rectangle overlaps with another.
     fn overlaps(&self, other: &impl Rectangle<Unit = Self::Unit>) -> bool {
-        self.left() < other.right()
-            && self.right() > other.left()
-            && self.top() > other.bottom()
-            && self.bottom() < other.top()
+        self.left() <= other.right()
+            && self.right() >= other.left()
+            && self.top() >= other.bottom()
+            && self.bottom() <= other.top()
     }
 
     /// Returns the intersection of two rectangles.
