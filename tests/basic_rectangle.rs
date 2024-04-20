@@ -33,3 +33,22 @@ fn test_contains_point() {
 
     assert!(!rect.contains_point(3, 3));
 }
+
+#[test]
+fn test_intersection_no_overlap() {
+    let rect1 = BasicRectangle::new_from_sides(0, 1, 1, 0);
+    let rect2 = BasicRectangle::new_from_sides(2, 3, 3, 2);
+    let intersection = rect1.intersection(&rect2);
+    assert!(intersection.is_none());
+}
+
+#[test]
+fn test_intersection_overlap() {
+    let rect1 = BasicRectangle::new_from_sides(0, 1, 1, 0);
+    let rect2 = BasicRectangle::new_from_sides(1, 2, 2, 1);
+    let intersection = rect1.intersection(&rect2).expect("Rectangles do not overlap");
+    assert_eq!(intersection.left(), 1);
+    assert_eq!(intersection.right(), 1);
+    assert_eq!(intersection.top(), 1);
+    assert_eq!(intersection.bottom(), 1);
+}
