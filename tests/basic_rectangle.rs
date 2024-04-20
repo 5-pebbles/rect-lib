@@ -16,6 +16,15 @@ fn test_perimeter_rectangle() {
 }
 
 #[test]
+fn test_area_rectangle() {
+    let rect = BasicRectangle::new_from_sides(0, 1, 1, 0);
+    assert_eq!(rect.area(), 1);
+
+    let rect = BasicRectangle::new_from_sides(0, 4, 4, 0);
+    assert_eq!(rect.area(), 16);
+}
+
+#[test]
 fn test_contains_point() {
     let rect = BasicRectangle::new_from_sides(0, 2, 2, 0);
     assert!(rect.contains_point(1, 1));
