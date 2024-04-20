@@ -63,7 +63,7 @@ where
 
     /// Checks if the rectangle contains the given point.
     fn contains_point(&self, x: Self::Unit, y: Self::Unit) -> bool {
-        x >= self.left() && x <= self.right() && y >= self.top() && y <= self.bottom()
+        x >= self.left() && x <= self.right() && y <= self.top() && y >= self.bottom()
     }
 
     /// Checks if one rectangle contains another.

@@ -14,3 +14,13 @@ fn test_perimeter_rectangle() {
     let rect = BasicRectangle::new_from_sides(0, 1, 1, 0);
     assert_eq!(rect.perimeter(), 4);
 }
+
+#[test]
+fn test_contains_point() {
+    let rect = BasicRectangle::new_from_sides(0, 2, 2, 0);
+    assert!(rect.contains_point(1, 1));
+    assert!(rect.contains_point(0, 0));
+    assert!(rect.contains_point(0, 2));
+
+    assert!(!rect.contains_point(3, 3));
+}
