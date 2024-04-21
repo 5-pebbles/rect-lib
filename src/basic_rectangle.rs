@@ -30,7 +30,7 @@ impl Rectangle for BasicRectangle {
     }
 
     fn new_from_sides(left: i32, right: i32, top: i32, bottom: i32) -> Self {
-        BasicRectangle {
+        Self {
             x: left,
             y: top,
             width: right - left + 1,

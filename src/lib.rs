@@ -10,6 +10,8 @@ pub use basic_rectangle::BasicRectangle;
 
 /// A trait containing methods for rectangle like data structures which implement `Sized` & `Copy`.
 ///
+/// This trait treats all edges (left, right, top, & bottom) as inclusive.
+///
 /// # Example
 /// ```
 /// use rect_lib::Rectangle;
@@ -42,7 +44,7 @@ pub use basic_rectangle::BasicRectangle;
 ///     }
 ///
 ///     fn new_from_sides(left: i32, right: i32, top: i32, bottom: i32) -> Self {
-///         BasicRectangle {
+///         Self {
 ///             x: left,
 ///             y: top,
 ///             width: right - left + 1,
