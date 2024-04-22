@@ -62,3 +62,7 @@ impl Rectangle for BasicRectangle {
     }
 }
 ```
+
+## License 📜
+
+This project is licensed under [GPL-v3](LICENSE).
