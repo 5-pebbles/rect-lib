@@ -4,7 +4,7 @@ A simple library for working with anything vaguely rectangular in rust.
 
 ## Features 📦
 
-- **Rectangle trait**: a trait implementing all rectangle operations; see [documentation](https://docs.rs/rect-lib/0.1.0/rect_lib/trait.Rectangle.html).
+- **Rectangle trait**: a trait implementing all rectangle operations; see [documentation](https://docs.rs/rect-lib/0.1.1/rect_lib/trait.Rectangle.html).
 
 - **BasicRectangle**: a simple implementation of the `Rectangle` trait.
 
@@ -13,7 +13,7 @@ A simple library for working with anything vaguely rectangular in rust.
 Add the crate to your `Cargo.toml`:
 ```toml
 [dependencies]
-rect-lib = "0.1.0"
+rect-lib = "0.1.1"
 ```
 or use `cargo add`:
 ```sh
