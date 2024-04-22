@@ -4,7 +4,7 @@ A simple library for working with anything vaguely rectangular in rust.
 
 ## Features 📦
 
-- **Rectangle trait**: a trait implementing all rectangle operations; see [documentation](https://docs.rs/rect-lib/latest/rect-lib/trait.Rectangle.html).
+- **Rectangle trait**: a trait implementing all rectangle operations; see [documentation](https://docs.rs/rect-lib/0.1.0/rect_lib/trait.Rectangle.html).
 
 - **BasicRectangle**: a simple implementation of the `Rectangle` trait.
 

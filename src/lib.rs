@@ -139,6 +139,7 @@ where
     }
 
     /// The height of the rectangle.
+    /// This is calculated as `top - bottom`.
     ///
     /// # Example
     /// ```
@@ -186,6 +187,7 @@ where
     }
 
     /// The area of the rectangle.
+    /// This is calculated as `width * height`.
     ///
     /// # Example
     /// ```
