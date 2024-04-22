@@ -62,7 +62,7 @@ where
     /// The unit type used for the rectangle.
     type Unit: Num + One + Copy + PartialEq + PartialOrd + Ord;
 
-    /// The left side of the rectangle.
+    /// The left most point of the rectangle.
     ///
     /// # Example
     /// ```
@@ -73,7 +73,7 @@ where
     /// ````
     fn left(&self) -> Self::Unit;
 
-    /// The right side of the rectangle.
+    /// The right most point of the rectangle.
     ///
     /// # Example
     /// ```
@@ -84,7 +84,7 @@ where
     /// ```
     fn right(&self) -> Self::Unit;
 
-    /// The top side of the rectangle.
+    /// The top most point of the rectangle.
     ///
     /// # Example
     /// ```
@@ -95,7 +95,7 @@ where
     /// ```
     fn top(&self) -> Self::Unit;
 
-    /// The bottom side of the rectangle.
+    /// The bottom most point of the rectangle.
     ///
     /// # Example
     /// ```
@@ -322,7 +322,7 @@ where
             },
         );
 
-        // collect all lines that need to be checked for gaps
+        // Section 1: collect all lines that need to be checked for gaps
         let mut lines: Vec<Line<Self>> = vec![Line {
             x: self.left(),
             opens: true,
@@ -358,7 +358,7 @@ where
         let mut active_rectangles: Vec<UnfinishedRect<Self>> = Vec::new();
 
         for line in lines {
-            // Section 1: collect all gaps between obstructions
+            // Section 2: collect all gaps between obstructions
             let mut gaps: Vec<Gap<Self>> = Vec::new();
 
             // think of each obstruction as a shingle on a roof
@@ -395,7 +395,7 @@ where
 
             active_rectangles.sort_unstable_by_key(|rect| Reverse(rect.left));
 
-            // Section 2: if the current line opens we create new rectangles
+            // Section 3: if the current line opens we create new rectangles
             if line.opens {
                 // try to create a new rect for each gap
                 for gap in gaps {
@@ -416,7 +416,7 @@ where
                 continue;
             }
 
-            // Section 3: if the current line closes we finish rectangles
+            // Section 3 & 1/2: if the current line closes we finish rectangles
             let mut new_active_rectangles: Vec<UnfinishedRect<Self>> = Vec::new();
 
             active_rectangles = active_rectangles
@@ -470,7 +470,7 @@ where
             active_rectangles.append(&mut new_active_rectangles);
         }
 
-        // now that we have checked all lines we can close any remaining rectangles
+        // Section 4: now that we have checked all lines we can close any remaining rectangles
         for rect in active_rectangles {
             unique_rectangles.push(Self::new_from_sides(
                 rect.left,
