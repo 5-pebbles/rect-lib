@@ -11,7 +11,7 @@ This sweep line algorithm identifies all unique, unobstructed sub-rectangles wit
 
 The sweep line does not traverse every point; it moves from left to right, checking only the points where rectangles transition.
 
-We will identify two types of lines:
+It will identify two types of lines:
 
 1. `Opening Lines:` These appear one unit to the right of each obstruction; this is where a new rectangle may start.
 2. `Closing Lines:` These appear on the first unit of each obstruction; this is where a rectangle may end.
@@ -22,7 +22,7 @@ There will also be an `opening line` on the first unit of the parent rectangle.
 
 ![image](https://github.com/5-pebbles/rect-lib/blob/dev/algorithms/assets/unobstructed_subrectangles-1.svg)
 
-**We will have four lines:**
+**The algorithm will draw four lines:**
 
 - A `opening line` at the start of the parent rectangle.
 - A `closing line` at the start of the first obstruction (same location as the parent's opening line).
@@ -37,23 +37,23 @@ Lines before or after the parent rectangle, such as the `closing line` of the la
 
 For each line, the algorithm identifies gaps between obstructions that may contain rectangles. Obstructions are sorted by their top position, and only those intersecting the current line are considered.
 
-We save a pointer to the bottom of the last obstruction, which starts at the top of the parent rectangle.
+It saves a pointer to the bottom of the last obstruction, which starts at the top of the parent rectangle.
 
-**As we move down through each obstruction, we:**
-- Check if the last obstruction's bottom is above the current obstruction's top; if it is, we have a gap.
-- Set the pointer to the minimum of its current value and the current obstruction's bottom. This is required to handle obstructions that overlap.
+**As it moves down through each obstruction, it:**
+- Checks if the last obstruction's bottom is above the current obstruction's top; if it is, there is a gap between them.
+- Sets the pointer to the minimum of its current value and the current obstruction's bottom. This is required to handle obstructions that overlap.
 
 **Example of overlapping obstructions:**
 
 ![image](https://github.com/5-pebbles/rect-lib/blob/dev/algorithms/assets/unobstructed_subrectangles-3.svg)
 
-The outer obstruction is processed first; if the pointer is updated to the inner obstruction, we would find a false gap.
+The outer obstruction is processed first; if the pointer is updated to the inner obstruction, a false gap would be found.
 
 ### Section 3: Identifying Rectangles
 
 The algorithm maintains a list of active rectangles and a list of completed rectangles.
 
-**We process each line from left to right; here is the logic for each type:**
+**processing each line from left to right; here is the logic for each type:**
 
 - `Opening Lines:` For each gap, if not filled by an active rectangle, a new active rectangle is created, starting at the current line with the gap's top and bottom.
 
