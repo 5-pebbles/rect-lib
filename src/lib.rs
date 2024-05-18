@@ -425,11 +425,12 @@ where
                 .iter()
                 .filter(|rect| {
                     // if the current rect fits within a gap we can keep it
-                    for gap in gaps.iter() {
-                        if gap.top >= rect.top && rect.bottom >= gap.bottom {
-                            // on to the next active rect
-                            return true;
-                        }
+                    if gaps
+                        .iter()
+                        .any(|gap| gap.top >= rect.top && rect.bottom >= gap.bottom)
+                    {
+                        // on to the next active rect
+                        return true;
                     }
 
                     // if it is obstructed we can close it
